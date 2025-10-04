@@ -9,7 +9,7 @@ gcc hexdump.c -o hex
 ```
 ## Running
 ```bash
-./hex <filename>
+./hex <filename> [flag]
 ```
 ## Option
 - `-N`: print the line number (offset) at the beginning of the each line line the original one.
