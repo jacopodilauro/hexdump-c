@@ -3,11 +3,11 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <ctype.h>
+#include <string.h>
 
-static size_t nline = 0; //line number in exadecimal
+static size_t nline = 0; //line number
 #define HEXDUMP_CHARS_PER_LINE 16
 void hexdump(char *buf, size_t len){
-	printf("%08X  ", nline); nline++;
 	for(int i = 0; i < len; i++){
 		if((i % 8 == 0) && (i % 16 != 0) ) { printf(" "); }
 		printf("%02X ", buf[i]);
@@ -30,8 +30,8 @@ void hexdump(char *buf, size_t len){
 	printf("|\n");
 }
 int main(int argc, char *argv[]){
-	if(argc != 2){
-		fprintf(stderr, "Usage: <exc name> <filename>\n");
+	if(argc < 2 || argc > 3){
+		fprintf(stderr, "Usage: <exc name> <filename> ...\n");
 		return 1;
 	}
 	const char *filename = argv[1];
@@ -44,9 +44,10 @@ int main(int argc, char *argv[]){
 //file reading and printing start
 	char buf[HEXDUMP_CHARS_PER_LINE];
 	ssize_t p;
-	while((p = read(fp, buf, sizeof(buf))) > 0){
-		hexdump(buf, p);
-	}
+		while((p = read(fp, buf, sizeof(buf))) > 0){
+			if(argc > 2 && strcmp(argv[2], "-N") == 0){ printf("%08X  ", nline); nline++; } 
+			hexdump(buf, p);
+		}
 //end
 	if(p == -1){
 		perror("Error reading file");
