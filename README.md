@@ -26,8 +26,8 @@ $ ./hex hexdump.c
 ```bash
 $ gcc hexdump.c -o hex
 $ ./hex test.txt
-48 65 6C 6C 6F 20 57 6F  72 6C 64 2E 0A 49 73 20 	|Hello World..Is |
-61 20 74 65 73 74 2E 0A  ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ 	|a test..|
+00000000  48 65 6C 6C 6F 20 57 6F  72 6C 64 2E 0A 49 73 20 	|Hello World..Is |
+00000001  61 20 74 65 73 74 2E 0A  ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ 	|a test..|
 ```
 ## License
 MIT License
