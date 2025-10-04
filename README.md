@@ -16,11 +16,11 @@ gcc hexdump.c -o hex
 ```bash
 $ gcc hexdump.c -o hex
 $ ./hex hexdump.c
-23 69 6E 63 6C 75 64 65  20 3C 73 74 64 69 6F 2E 	|#include <stdio.|
-68 3E 0A 23 69 6E 63 6C  75 64 65 20 3C 75 6E 69 	|h>.#include <uni|
+00000000  23 69 6E 63 6C 75 64 65  20 3C 73 74 64 69 6F 2E   |#include <stdio.|
+00000001  68 3E 0A 23 69 6E 63 6C  75 64 65 20 3C 75 6E 69   |h>.#include <uni|
 ...
-70 29 3B 0A 09 72 65 74  75 72 6E 20 30 3B 0A 7D 	|p);..return 0;.}|
-0A ~~ ~~ ~~ ~~ ~~ ~~ ~~  ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ 	|.|
+00000058  66 70 29 3B 0A 09 72 65  74 75 72 6E 20 30 3B 0A   |fp);..return 0;.|
+00000059  7D 0A ~~ ~~ ~~ ~~ ~~ ~~  ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~   |}.|
 ```
 ### Dumping a text file:
 ```bash
