@@ -1,5 +1,5 @@
 # hexdump-c
-Hexdump utility using system calls in C. Similar to the original Linux `hexdump`.
+Hexdump utility using system calls in C. Similar to the original Linux `hexdump -C`.
 ## Description
 This program reads a file and displays its contents in hexadecimal format alongside the ASCII representation of the characters.
 It uses low-level system calls (`open`, `read`, `close`) for direct file I/O operations.
