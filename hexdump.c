@@ -3,7 +3,8 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <ctype.h>
-static size_t nline = 0;
+
+static size_t nline = 0; //line number in exadecimal
 #define HEXDUMP_CHARS_PER_LINE 16
 void hexdump(char *buf, size_t len){
 	printf("%08X  ", nline); nline++;
@@ -21,7 +22,6 @@ void hexdump(char *buf, size_t len){
 	}
 	//Check that the character can be printed
 	//Print 16 characters per line of the buffer (file)	
-	//printf("\t|");
 	printf("  |");
 	for(int i = 0; i < len; i++){ 		
 		char c = isprint((unsigned char)buf[i])? buf[i] : '.';
@@ -41,12 +41,13 @@ int main(int argc, char *argv[]){
 		close(fp);
 		return 1;
 	}
-
+//file reading and printing start
 	char buf[HEXDUMP_CHARS_PER_LINE];
 	ssize_t p;
 	while((p = read(fp, buf, sizeof(buf))) > 0){
 		hexdump(buf, p);
 	}
+//end
 	if(p == -1){
 		perror("Error reading file");
 		close(fp);
