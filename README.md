@@ -11,23 +11,33 @@ gcc hexdump.c -o hex
 ```bash
 ./hex <filename>
 ```
+## Option
+- `-N`: print the line number (offset) at the beginning of the each line line the original one.
 ## Example Output
 ### Dumping the source code itself:
 ```bash
 $ gcc hexdump.c -o hex
 $ ./hex hexdump.c
-00000000  23 69 6E 63 6C 75 64 65  20 3C 73 74 64 69 6F 2E   |#include <stdio.|
-00000001  68 3E 0A 23 69 6E 63 6C  75 64 65 20 3C 75 6E 69   |h>.#include <uni|
+23 69 6E 63 6C 75 64 65  20 3C 73 74 64 69 6F 2E   |#include <stdio.|
+68 3E 0A 23 69 6E 63 6C  75 64 65 20 3C 75 6E 69   |h>.#include <uni|
 ...
-00000058  66 70 29 3B 0A 09 72 65  74 75 72 6E 20 30 3B 0A   |fp);..return 0;.|
-00000059  7D 0A ~~ ~~ ~~ ~~ ~~ ~~  ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~   |}.|
+3B 0A 09 63 6C 6F 73 65  28 66 70 29 3B 0A 09 72   |;..close(fp);..r|
+65 74 75 72 6E 20 30 3B  0A 7D 0A ~~ ~~ ~~ ~~ ~~   |eturn 0;.}.|
 ```
 ### Dumping a text file:
 ```bash
 $ gcc hexdump.c -o hex
 $ ./hex test.txt
-00000000  48 65 6C 6C 6F 20 57 6F  72 6C 64 2E 0A 49 73 20 	|Hello World..Is |
-00000001  61 20 74 65 73 74 2E 0A  ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ 	|a test..|
+48 65 6C 6C 6F 20 57 6F  72 6C 64 2E 0A 49 73 20 	|Hello World..Is |
+61 20 74 65 73 74 2E 0A  ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~ 	|a test..|
+```
+### With `-N` flag:
+```
+$ gcc hexdump.c -o hex
+$ ./hex test.txt -N
+00000000  48 65 6C 6C 6F 20 57 6F  72 6C 64 2E 0A 49 73 20   |Hello World..Is |
+00000001  61 20 74 65 73 74 2E 0A  ~~ ~~ ~~ ~~ ~~ ~~ ~~ ~~   |a test..|
+
 ```
 ## License
 MIT License
